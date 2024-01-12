@@ -1,0 +1,32 @@
+<div class="cart-resume">
+    <p class="title">Your Bag</p>
+    <div class="itens-container">
+        <p class="text-center py-5" *ngIf="productList.length === 0">no items were added</p>
+        @for (product of cartItems$ | async; track product.id ) {
+            <div class="item-cart">
+                <div class="image">
+                    <img src={{product.product.image}} alt={{product.product.title}} srcset="">
+                </div>
+                <div class="info-cart">
+                    <p>{{product.product.title}}</p>
+                    <app-input-counter [valueCounter]='product.quantity' [valueProduct]='product'></app-input-counter>
+                </div>
+                <div class="price">
+                    <p>{{product.product.price | currency}}</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="valuesCheckout">
+        <div class="valuesCheckout__subTotal">
+            <p>Subtotal</p>
+            <p class="value">{{(cartSubTotal$ | async) | currency}}</p>
+        </div>
+        <div class="valuesCheckout__total">
+            <p>Total</p>
+            <p class="value">{{(cartTotal$ | async) | currency}}</p>
+        </div>
+    </div>
+    <a class="btn btn-checkout">Go to Checkout</a>
+</div>

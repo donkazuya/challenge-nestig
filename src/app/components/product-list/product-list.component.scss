@@ -1,0 +1,193 @@
+.products {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.filters {
+    padding: 60px 0 40px;
+}
+.btn-add-cart {
+    background-color: transparent;
+    color: transparent;
+    transition: background-color .3s, color .3s;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px 24px;
+    margin-top: 1rem;
+    .card-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f3f5f7;
+        &__product {
+            height: 21.875rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            
+            
+            &__info {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
+                padding: 1rem 1.5rem;
+                .info-description {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    z-index: 2;
+                    p {
+                        margin: 0;
+                        font-weight: 700;
+                        padding: 2px 12px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                    }
+                }
+                .wishlist {
+                    background-color: #fff;
+                    padding: 3px 5px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    margin-top: 3px;
+                    box-shadow: 0px 8px 16px -8px rgba(15, 15, 15, 0.18);
+                }
+            }
+
+            &__image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 50%;
+                margin-top: -25px;
+                
+                img {
+                    transition: width .2s;
+                    width: 45%;
+                }
+            }
+
+            &:hover {
+                .btn-add-cart {
+                    background-color: #000;
+                    color: #fff;
+                    transition: background-color ease-in-out .2s;
+                    &:hover {
+                        background-color: #6C7275;
+                    }
+                }
+                .card-item__product__image {
+                    img {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+        &__description {
+            background-color: #fff;
+            width: 100%;
+            min-height: 180px;
+            &__prices {
+                display: flex;
+                gap: 10px;
+                
+                .old-price {
+                    text-decoration: line-through;
+                    font-weight: 400;
+                    color: #6C7275
+                }
+            }
+            p {
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.filter-price {
+    transition: border-radius 1.5s;
+    cursor: pointer;
+}
+
+.filter-price[aria-expanded="true"] {
+    transition: border-radius .1s;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
+}
+
+#collapseBasic {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-top: 0;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+    }
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-default {
+    background-color: #fff;
+}
+
+.info-green {
+    color: #fff;
+    background-color: #38CB89;
+}
+
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.sortBy {
+    label {
+        cursor: pointer;
+    }
+    input {
+        display: none;
+    }
+}
+
+.btn-filter {
+    background-color: #000;
+    color: #fff;
+    transition: background-color ease-in-out .2s;
+    &:hover {
+        background-color: #6C7275;
+    }
+}
+

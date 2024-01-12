@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <div class="menu" (click)="toggleMenu()">
+            <img src="../../../assets/svg/menu.svg" alt="">
+        </div>
+        <ul *ngIf="menuOpen">
+            <li>Home</li>
+            <li>Shop</li>
+            <li>Product</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+    <div class="bag-container">
+        <img src="../../../assets/svg/bag.svg" alt="Icon Bag" (click)="toggleCart()">
+        <span>{{ productList.length ? productList.length : 0}}</span>
+        <div class="cart-container" *ngIf="isOpen">
+            <app-cart></app-cart>
+        </div>
+    </div>
+</header>

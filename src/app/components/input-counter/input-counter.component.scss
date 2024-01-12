@@ -1,0 +1,20 @@
+.form-control {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100px;
+    span {
+        width: 20px;
+        text-align: center;
+    }
+    a {
+       font-size: 1rem;
+       font-weight: 600;
+       color: #ccc;
+       cursor: pointer;
+       transition: color .2s;
+       &:hover {
+        color:#6C7275;
+       }
+    }
+}

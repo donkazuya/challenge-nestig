@@ -1,0 +1,93 @@
+<section class="products">
+    <div class="container">
+        <div class="filters">
+            <form action="" class="row">
+                <div class="col-lg-3">
+                    <label for="categories">CATEGORIES</label>
+                    <select 
+                        id="categories" 
+                        class="form-select" 
+                        [(ngModel)]="categorieSelected" 
+                        [ngModelOptions]="{standalone: true}" 
+                        (change)="filters(categorieSelected)"
+                    >
+                            <option value="" selected>All Products</option>
+                        @for(categorie of allCategories; track categorie) {
+                            <option [value]="categorie">{{categorie}}</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-lg-3 price">
+                    <label for="price">PRICE</label>
+                    <div class="form-select filter-price" (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Select Price
+                    </div>
+                    <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                        <div>
+                            <form action="">
+                                <div class="input-container">
+                                    <div >
+                                        <label for="min">Min</label>
+                                        <input 
+                                            type="text" 
+                                            name="min" 
+                                            class="form-control"
+                                            [(ngModel)]="min"
+                                        >
+                                    </div>
+                                    <div >
+                                        <label for="max">Max</label>
+                                        <input 
+                                            type="text" 
+                                            name="max" 
+                                            class="form-control"
+                                            [(ngModel)]="max"
+                                        >
+                                    </div>
+                                </div>
+                                <a class="btn btn-filter" (click)="filters(categorieSelected)">Apply</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex flex-row-reverse">
+                    <div class="sortBy">
+                        <input type="checkbox" name="sortBy" id="sortBy">
+                        <label for="sortBy" (click)="changeSortby()">Sort By</label>
+                        <img src="../../../assets/svg/chevron-down.svg" alt="" [ngClass]="sortby ? 'rotate' : ''">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="cards-container">
+            @for (product of allProducts; track product.id ) {
+                <div class="card-item">
+                    <div class="card-item__product" [popover]="product.description">
+                        <div class="card-item__product__info">
+                            <div class="info-description">
+                                <p class="info-default">NEW</p>
+                                <p class="info-green">-50%</p>
+                            </div>
+                            <a class="wishlist">
+                                <img src="../../../assets/svg/heart.svg" alt="wishlist image">
+                            </a>
+
+                        </div>
+                        <div class="card-item__product__image">
+                            <img src={{product.image}} alt={{product.title}} srcset="">
+                        </div>
+                        <a class="btn btn-add-cart" (click)="addCart(product)">Add to cart</a>
+                    </div>
+                    <div class="card-item__description">
+                        <rating [(ngModel)]="product.rating.rate" [readonly]="true"></rating>
+                        <p>{{product.title}}</p>
+                        <div class="card-item__description__prices">
+                            <p>{{discount(product.price) | currency}}</p>
+                            <p class="old-price">{{product.price | currency}}</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
