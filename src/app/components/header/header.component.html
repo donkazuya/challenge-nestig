@@ -12,7 +12,7 @@
     </nav>
     <div class="bag-container">
         <img src="../../../assets/svg/bag.svg" alt="Icon Bag" (click)="toggleCart()">
-        <span>{{ productList.length ? productList.length : 0}}</span>
+        <span>{{ productList?.length ? productList.length : 0}}</span>
         <div class="cart-container" *ngIf="isOpen">
             <app-cart></app-cart>
         </div>

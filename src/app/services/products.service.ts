@@ -13,7 +13,10 @@ export class ProductsService {
         .then((res) => {
             return res
         })
-        .catch((err) => err) 
+        .catch((err) => {
+            return err
+        }
+        ) 
     }
 
     async getAllCategories() {
@@ -21,7 +24,9 @@ export class ProductsService {
         .toPromise()
         .then((res) => {
             return res
-        }).catch((err) => err);
+        }).catch((err) => {
+            return err
+        });
     }
 
     async getCategorySpecific(category: string, order?: string) {

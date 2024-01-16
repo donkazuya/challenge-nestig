@@ -20,11 +20,16 @@ export interface IAppState {
     subTotal: number;
 }
 
-export const appInitialState: IAppState = {
+const store = JSON.parse(sessionStorage.getItem('cartList') as IAppState | any)
+
+const appState = store ? store.app : {
     cartList: [],
     total: 0,
     subTotal: 0
 }
+
+
+export const appInitialState: IAppState = appState
 
 
 
