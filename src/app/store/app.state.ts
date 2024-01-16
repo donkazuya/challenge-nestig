@@ -71,7 +71,6 @@ export const appReducer = createReducer(
             
         const existingItem = state.cartList.find((item:any) => item.product.id === product.product.id)
         const existingQuantity = state.cartList.find((item:any) => item.quantity > 1)
-        console.log(existingQuantity);
         
         
         
@@ -85,7 +84,6 @@ export const appReducer = createReducer(
             
             return { ...state, cartList: updateCart }
         } else {
-            console.log(state.cartList.filter((p: any) => p.product.id !== product.id));
             
             const updatedProducts = state.cartList.filter((p: any) => p.product.id !== product.product.id);
             return { ...state, cartList: updatedProducts };

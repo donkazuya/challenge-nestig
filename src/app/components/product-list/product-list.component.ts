@@ -114,7 +114,6 @@ export class ProductListComponent implements OnInit  {
   addCart(product:any) {
 
     // this.cartList = this.cartList$
-    console.log(product, 'addCart');
     
     this.store.dispatch(addToCart(product))
     this.store.dispatch(updateCartTotal())
